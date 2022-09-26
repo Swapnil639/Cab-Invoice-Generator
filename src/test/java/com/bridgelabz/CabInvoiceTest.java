@@ -18,7 +18,7 @@ public class CabInvoiceTest {
     public void givenLessDistanceOrTime_ShouldReturnMinimumFare() {
         double distance = 0.1;
         int time = 1;
-        double fare = invoiceGenerator.calculateFare(distance,time);
+        double fare = invoiceGenerator.calculateFare(distance, time);
         Assert.assertEquals(5, fare, 0.0);
     }
 
@@ -32,5 +32,12 @@ public class CabInvoiceTest {
         InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
         Assert.assertEquals(expectedInvoiceSummary, summary);
 
+    }
+
+    @Test
+    public void givenUserId_ShouldReturnInvoiceSummary() {
+        InvoiceSummary invoiceSummary = invoiceGenerator.getInvoice(1);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+        Assert.assertEquals(expectedInvoiceSummary.getInvoiceSummary(), invoiceSummary.getInvoiceSummary());
     }
 }
